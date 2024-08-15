@@ -28,6 +28,6 @@ ng serve
 ```
 
 ```http
-  POST [/api/user/auth/register](http://localhost:8082/api/user/auth)]
-  POST [/api/user/auth/signup](http://localhost:8082/api/user/auth)]
+  POST http://localhost:8082/api/user/auth
+  POST [/api/user/auth/signup](http://localhost:8082/api/user/auth)
 ```
