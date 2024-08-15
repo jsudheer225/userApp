@@ -1,0 +1,203 @@
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div *ngIf="message !== ''">{{message}}</div>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <div class="row d-flex align-items-center">
+          <div class="col-md-6 text-end">
+            Username
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Username</mat-label>
+              <input matInput placeholder="Username" formControlName="userName">
+            </mat-form-field>
+            <div class="validation-error" *ngIf="registerForm.get('userName')?.invalid && (registerForm.get('userName')?.dirty || registerForm.get('userName')?.touched)">
+              <div *ngIf="registerForm.get('userName')?.errors?.['required']">Username is required</div>
+              <div *ngIf="registerForm.get('userName')?.errors?.['minlength']">Username must be at least 2 characters long.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center">
+          <div class="col-md-6 text-end">
+            Email
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+            <div class="validation-error" *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
+              <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required</div>
+              <div *ngIf="registerForm.get('email')?.errors?.['email']">Enter a valid Email.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center">
+          <div class="col-md-6 text-end">
+            Password
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput placeholder="Password" formControlName="password">
+            </mat-form-field>
+            <div class="validation-error" *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+              <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required</div>
+              <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 2 characters long.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center">
+          <div class="col-md-6 text-end">
+            Confirm Password
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Confirm Password</mat-label>
+              <input type="password" matInput placeholder="Confirm Password" formControlName="confirmPassword" (keyup)="validatePwd($event)">
+            </mat-form-field>
+            <div class="validation-error" *ngIf="registerForm.get('confirmPassword')?.invalid && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)">
+              <div *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required</div>
+              <div *ngIf="registerForm.get('confirmPassword')?.errors?.['mismatch']">Password and Confirm Password is not matched</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center">
+          <div class="col-md-6 text-end">
+            Display Name
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Display Name</mat-label>
+              <input matInput placeholder="Display Name" formControlName="displayName">
+            </mat-form-field>
+            <div class="validation-error" *ngIf="registerForm.get('displayName')?.invalid && (registerForm.get('displayName')?.dirty || registerForm.get('displayName')?.touched)">
+              <div *ngIf="registerForm.get('displayName')?.errors?.['required']">Display Name is required</div>
+              <div *ngIf="registerForm.get('displayName')?.errors?.['minlength']">Display Name must be at least 2 characters long.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center">
+          <div class="col-md-6 text-end">
+            Name
+          </div>
+          <div class="col-md-2">
+            <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input matInput placeholder="First Name" formControlName="firstName">
+            </mat-form-field>
+            <div class="validation-error" *ngIf="registerForm.get('firstName')?.invalid && (registerForm.get('firstName')?.dirty || registerForm.get('firstName')?.touched)">
+              <div *ngIf="registerForm.get('firstName')?.errors?.['required']">First Name is required</div>
+              <div *ngIf="registerForm.get('firstName')?.errors?.['minlength']">First Name must be at least 2 characters long.</div>
+            </div>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-md-2">
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input matInput placeholder="Last Name" formControlName="lastName">
+            </mat-form-field>
+            <div class="validation-error" *ngIf="registerForm.get('lastName')?.invalid && (registerForm.get('lastName')?.dirty || registerForm.get('lastName')?.touched)">
+              <div *ngIf="registerForm.get('lastName')?.errors?.['required']">Last Name is required</div>
+              <div *ngIf="registerForm.get('lastName')?.errors?.['minlength']">Last Name must be at least 2 characters long.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center">
+          <div class="col-md-6 text-end">
+            Nickname
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Nickname</mat-label>
+              <input matInput placeholder="Nickname" formControlName="nickname">
+            </mat-form-field>
+            <div class="validation-error" *ngIf="registerForm.get('nickname')?.invalid && (registerForm.get('nickname')?.dirty || registerForm.get('nickname')?.touched)">
+              <div *ngIf="registerForm.get('nickname')?.errors?.['required']">Nickname is required</div>
+              <div *ngIf="registerForm.get('nickname')?.errors?.['minlength']">Nickname must be at least 2 characters long.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center">
+          <div class="col-md-6 text-end">
+            Website
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Website</mat-label>
+              <input matInput placeholder="Website" formControlName="website">
+            </mat-form-field>
+            <div class="validation-error" *ngIf="registerForm.get('website')?.invalid && (registerForm.get('website')?.dirty || registerForm.get('website')?.touched)">
+              <div *ngIf="registerForm.get('website')?.errors?.['website']">Website is required</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center">
+          <div class="col-md-6 text-end">
+            Bio
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Bio</mat-label>
+              <textarea matInput placeholder="Bio" formControlName="bio"></textarea>
+            </mat-form-field>
+            <div class="validation-error" *ngIf="registerForm.get('bio')?.invalid && (registerForm.get('bio')?.dirty || registerForm.get('bio')?.touched)">
+              <div *ngIf="registerForm.get('bio')?.errors?.['required']">Bio is required</div>
+              <div *ngIf="registerForm.get('bio')?.errors?.['minlength']">Bio must be at least 20 characters long.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center">
+          <div class="col-md-6 text-end">
+            Jabber
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Jabber</mat-label>
+              <input matInput placeholder="Jabber" formControlName="jabber">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center">
+          <div class="col-md-6 text-end">
+            AOL IM
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>AOL IM</mat-label>
+              <input matInput placeholder="AOL IM" formControlName="aolIm">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center">
+          <div class="col-md-6 text-end">
+            Yahoo IM
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Yahoo IM</mat-label>
+              <input matInput placeholder="Yahoo IM" formControlName="yahooIm">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-6 mx-auto text-end mb-4">
+          <button type="submit" mat-raised-button color="primary">Register</button>
+          <a mat-button routerLink="/login" class="ml-2">Back to Login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

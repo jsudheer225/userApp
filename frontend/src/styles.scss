@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.validation-error {
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  bottom: 13px;
+  left: 5px;
+}

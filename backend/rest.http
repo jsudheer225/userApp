@@ -1,0 +1,23 @@
+
+###
+GET http://localhost:8082
+
+
+###
+POST http://localhost:8082/api/user/auth/signup
+Content-Type: : application/json
+
+
+{
+    "userName": "abc123",
+    "email": "abc123@gmail.com",
+    "password": "123456",
+    "firstName": "Test",
+    "lastName": "User1",
+    "nickname": "user1",
+    "website": "https://testuser.com",
+    "bio": "nothing more to tell good everything",
+    "jabber": "user12458a",
+    "aolIm": "user12458a",
+    "yahooIm": "user12458a"
+}

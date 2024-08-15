@@ -1,0 +1,43 @@
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <div class="row d-flex align-items-center">
+          <div class="col-md-6 text-end">
+            Username
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Username</mat-label>
+              <input matInput placeholder="Username" formControlName="userName">
+            </mat-form-field>
+            <div class="validation-error" *ngIf="loginForm.get('userName')?.invalid && (loginForm.get('userName')?.dirty || loginForm.get('userName')?.touched)">
+              <div *ngIf="loginForm.get('userName')?.errors?.['required']">Username is required</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center">
+          <div class="col-md-6 text-end">
+            Password
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput placeholder="Password" formControlName="password">
+            </mat-form-field>
+            <div class="validation-error" *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+              <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mx-auto text-end mb-4">
+          <button type="submit" mat-raised-button color="primary">Login</button>
+          <a mat-button routerLink="/register" class="ml-2">Signup</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
