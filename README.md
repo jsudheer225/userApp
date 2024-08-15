@@ -27,7 +27,8 @@ cd frontend
 ng serve
 ```
 
-```http
-  POST http://localhost:8082/api/user/auth
-  POST [/api/user/auth/signup](http://localhost:8082/api/user/auth)
+```
+http
+  POST http://localhost:8082/api/user/auth/login
+  POST http://localhost:8082/api/user/auth/signup
 ```
